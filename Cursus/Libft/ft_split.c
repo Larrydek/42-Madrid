@@ -10,22 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include "libft.h"
+#include "libft.h"
 
-size_t ft_n_strings(char const *s, char c)
+/*
+CUENTA LA CANTIDAD DE BYTES A ALMACENAR EN LA DIMENSION DE MÁS AFUERA
+-LA CANTIDAD DE STRINGS SEPARADAS, BÁSICAMENTE-
+*/
+
+static size_t ft_n_strings(char const *s, char c)
 {
     size_t n;
     size_t i;
 
     char *trim_s;
-    char cast_c[2];
-    cast_c[0] = c;
-    cast_c[1] = 0;
+    char c_str[2];
+    c_str[0] = c;
+    c_str[1] = 0;
     
     i = 0;
     n = 0;
     
-    trim_s = ft_strtrim(s, cast_c);
+    trim_s = ft_strtrim(s, c_str);
 
     while (trim_s[i] != 0)
     {
@@ -34,40 +39,17 @@ size_t ft_n_strings(char const *s, char c)
         i++;
     }
 
+    free(trim_s);
     return (n);
 }
 
-char    ft_str_bytes(char const *s, char c)
-{
-    size_t n;
-    size_t i;
-    size_t j;
-
-    char *trim_s;
-    char cast_c[2];
-    cast_c[0] = c;
-    cast_c[1] = 0;
-    
-    i = 0;
-    n = 0;
-    
-    trim_s = ft_strtrim(s, cast_c);
-    
-    while (n < ft_n_strings(s, c))
-    {
-        while (trim_s[i] != 0)
-        {
-            i++;
-            j++;
-        }
-            if (trim_s[i] == 0)
-                {
-                    
-                }
-        
-    }
-    
-}
+/*
+-CASTEO EL CHAR A STRING
+-RESERVO MEMORIA PARA N_STRINGS BYTES
+-TRIM PARA SACAR LOS CARACTERES INICIALES Y FINALES
+-RESERVO MEMORIA PARA N_STRINGS DE LONGITUD X + 1
+-RELLENO LAS STRINGS
+*/
 
 char **ft_split(char const *s, char c)
 {
@@ -76,41 +58,92 @@ char **ft_split(char const *s, char c)
     char *trim_s;
     
     size_t i;
+    size_t j;
+    size_t x;
     size_t n_strings;
 
     i = 0;
+    j = 0;
+    x = 0;
     n_strings = ft_n_strings(s, c);
+
     c_str[0] = c;
     c_str[1] = 0;
+
     trim_s = ft_strtrim(s, c_str);
+
+    if (!s || s == 0)
+        return NULL;
     
+    final_s = (char **)malloc((n_strings + 1) * sizeof(char *));
+    final_s[n_strings] = NULL;
+
     while (i < n_strings)
     {
-        final_s = (char **)malloc(sizeof(char *));
+        x = 0;
+        while (trim_s[j] != c && trim_s[j] != 0)
+        {
+            j++;
+            x++;
+        }
+        if (trim_s[j] == c || trim_s[j] == 0)
+        {
+            final_s[i] = (char *)malloc((x + 1) * sizeof(char));
+            final_s[i][x] = '\0';
+            j++;
+        }
         i++;
     }
-
+    
     i = 0;
+    j = 0;
+    x = 0;
 
-    return (final_s)  
+    while(i < n_strings)
+    {
+        while(trim_s[j] != c && trim_s[j] != 0)
+        {
+            printf("\ni:%ld COPIANDO STRING", i);
+            printf("\nx:%ld COPIANDO STRING", x);
+            final_s[i][x] = trim_s[j];
+            j++;
+            x++;
+        }
+        while (trim_s[j] == c)
+            j++;
+        i++;
+        x = 0;
+    }
+    
+    free(trim_s);
+    return (final_s);
 }
+
+/*
+IMPRIMO CADA STRING EN LOOP
+RESULT[I] = CADA PALABRA SEPARADA
+*/
+
 
 int main ()
 {
-    char const *s = "mmmmmmmeeeeeerequetengueeeeee";
-    char c = 'e';
+    char const *s = "ARGENTINA";
+    char c = 'E';
     char **result = ft_split(s, c);
-    int i;
+
+    size_t i;
     i = 0;
 
-    while(result[i] != 0)
+    printf("CANTIDAD DE STRINGS: %zu\n", ft_n_strings(s, c));
+    printf("STRING SEPARADAS:\n");
+    while(result[i] != NULL)
     {
-        printf("%s", result[i]);
+        printf("%s\n", result[i]);
+        free(result[i]);
         i++;
     }
-    return 0;
 
-    printf("%zu", n_strings(s, c));
+    free(result);
     return (0);
 }
- */
+

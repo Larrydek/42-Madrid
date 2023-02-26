@@ -18,9 +18,11 @@ char    *ft_memcpy(void *dst, const void *src, size_t n)
 {
     size_t i;
     unsigned char *result;
+    unsigned char *cast_src;
 
     i = 0;
     result = (unsigned char *)dst;
+    cast_src = (unsigned char *)src;
     
     if (dst == 0 && src == 0)
         return dst;
@@ -28,7 +30,7 @@ char    *ft_memcpy(void *dst, const void *src, size_t n)
 
     while (i < n)
     {
-        result[i] = *(unsigned char *)&src[i];
+        result[i] = cast_src[i];
         i++;
     }
     return (dst);
