@@ -12,42 +12,6 @@
 
 #include "libft.h"
 
-/* static char *ft_case_min_int(void)
-{
-    char *min_char;
-    min_char = (char *)malloc(12 * sizeof(char));
-    if (min_char == NULL)
-        return NULL;
-
-    min_char[0] = '-';
-    min_char[1] = '2';
-    min_char[2] = '1';
-    min_char[3] = '4';
-    min_char[4] = '7';
-    min_char[5] = '4';
-    min_char[6] = '8';
-    min_char[7] = '3';
-    min_char[8] = '6';
-    min_char[9] = '4';
-    min_char[10] = '8';
-    min_char[11] = '\0';
-
-    return min_char;
-} */
-
-/* static char *ft_case_zero(void)
-{
-    char *zero;
-    zero = (char *)malloc(sizeof(char) * 2);
-
-    if (zero == NULL)
-        return NULL;
-
-    zero[0] = 48;
-    zero[1] = 0;
-    return zero;
-} */
-
 static long ft_count_spaces(int n)
 {
     long count;
@@ -73,6 +37,7 @@ char *ft_itoa(int n)
     char *result;
     long i;
     long num;
+    
     
     num = n;
     if (num == 0)
