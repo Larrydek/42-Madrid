@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 /* static char *ft_case_min_int(void)
 {
@@ -76,17 +74,13 @@ char *ft_itoa(int n)
     long i;
     long num;
     
-    i = 1;
     num = n;
-
     if (num == 0)
         return (ft_strdup("0"));
-
     i = ft_count_spaces(num);
-    result = (char *)malloc(sizeof(char) * i);
+    result = (char *)malloc(sizeof(char) * i);   
     if (!result)
         return NULL;
-
     if (num < 0)
     {
         result[0] = '-';
@@ -103,13 +97,13 @@ char *ft_itoa(int n)
     }
     return result;
 }
-
-/* int main()
+/*
+int main()
 {   
     int n;
     char *result;
     //char *min_int = ft_case_min_int();
-    n = 8124;
+    n = 0;
     result = ft_itoa(n);
 
     printf("RESULT: %s\n", result);
@@ -118,4 +112,4 @@ char *ft_itoa(int n)
 
     return (0);
 }
- */
+*/
