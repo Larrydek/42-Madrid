@@ -2,19 +2,37 @@
 
 void ft_putnbr_fd(int n, int fd)
 {
-    char *s;
-    size_t i;
+    char s[2];
+    long num;
 
-    i = 0;
-    s = ft_itoa(n);
+    num = n;
 
-    if (!s)
-        return;
-
-    while(s[i])
+    if (num < 0)
     {
-        write(fd, &s[i], 1);
-        i++;
+        write(fd, "-", 1);
+        num = -num;
     }
-    free(s);
+
+    while(num != 0)
+    {
+        s[0] = (num % 10) + 48;
+        s[1] = 0;
+        num = num / 10;
+        ft_putnbr_fd(num, fd);
+        write(fd, &s[0], 1);
+        return;
+    }
 }
+
+/*
+int main()
+{
+    int n;
+    int fd;
+
+    n = -2147483648;
+    fd = 2;
+    ft_putnbr_fd(n, fd);
+    return 0;
+}
+*/
