@@ -50,8 +50,7 @@ char	*ft_itoa(int n)
 		result[0] = '-';
 		num = -num;
 	}
-	i--;
-	result[i] = 0;
+	result[--i] = 0;
 	while (i-- && result[i] != '-')
 	{
 		result[i] = (num % 10) + 48;
@@ -64,14 +63,11 @@ char	*ft_itoa(int n)
 {   
 	int n;
 	char *result;
-	//char *min_int = ft_case_min_int();
 	n = 42;
 	result = ft_itoa(n);
 
 	printf("RESULT: %s\n", result);
-	//printf("FT_CASE_MIN_INT: %s\n", min_int);
 	printf("%ld", ft_count_spaces(n));
 
 	return (0);
-}
- */
+} */
