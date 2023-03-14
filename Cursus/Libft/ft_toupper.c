@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jde-clee <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jde-clee <jde-clee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:33:06 by jde-clee          #+#    #+#             */
-/*   Updated: 2023/01/27 18:33:08 by jde-clee         ###   ########.fr       */
+/*   Updated: 2023/03/13 23:05:36 by jde-clee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <ctype.h>
 
-int ft_toupper(int c)
+int	ft_toupper(int c)
 {
-    int upper;
+	int	upper;
 
-    upper = c;
-    if (upper > 96 && upper < 123)
-        upper = upper - 32;
-    return (upper);
+	upper = c;
+	if (upper > 96 && upper < 123)
+		upper = upper - 32;
+	return (upper);
 }
 
 // int main()

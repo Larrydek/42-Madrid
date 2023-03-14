@@ -6,17 +6,17 @@
 /*   By: jde-clee <jde-clee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:51:34 by jde-clee          #+#    #+#             */
-/*   Updated: 2023/02/01 21:27:21 by jde-clee         ###   ########.fr       */
+/*   Updated: 2023/03/13 23:08:31 by jde-clee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isascii(int  c)
+int	ft_isascii(int c)
 {
-    if (c < 0 || c > 127)
-        return (0);
-    return (1);
+	if (c < 0 || c > 127)
+		return (0);
+	return (1);
 }
 
 // int main()
